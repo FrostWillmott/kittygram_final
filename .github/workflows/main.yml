@@ -132,16 +132,6 @@ jobs:
       - build_frontend_and_push_to_docker_hub
       - build_gateway_and_push_to_docker_hub
     steps:
-      - name: Set permissions on remote directory
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USER }}
-          key: ${{ secrets.SSH_KEY }}
-          passphrase: ${{ secrets.SSH_PASSPHRASE }}
-          script: |
-            mkdir -p kittygram
-            chmod 755 kittygram
       - name: Checkout repo
         uses: actions/checkout@v3
       - name: Copy docker-compose.yml via ssh
