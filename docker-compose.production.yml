@@ -15,8 +15,8 @@ services:
     image: frostwillmott/kittygram_backend
     env_file: .env
     volumes:
-      - static:/app/backend_static
-      - media:/app/media
+      - static:/backend_static
+      - media:/media
   frontend:
     env_file: .env
     image: frostwillmott/kittygram_frontend
