@@ -18,7 +18,7 @@ services:
       - static:/backend_static
       - media:/media
   frontend:
-#    env_file: .env
+    env_file: .env
     image: frostwillmott/kittygram_frontend
     command: cp -r /app/build/. /frontend_static/
     volumes:
