@@ -70,14 +70,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Set up nodeJS
-        # Это готовый воркфлоу для установки Node.js на раннер
         uses: actions/setup-node@v3
         with:
-          # Это параметр воркфлоу, указывающий нужную версию Node.js
           node-version: 18
 
       - name: Install dependencies
-        # Эта команда устанавливает зависимости для фронтенда
         run: |
           cd frontend/
           npm ci
@@ -127,7 +124,7 @@ jobs:
           context: ./gateway/
           push: true
           tags: frostwillmott/kittygram_gateway:latest
-
+#1
   deploy:
     runs-on: ubuntu-latest
     needs:
@@ -145,7 +142,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
           source: "docker-compose.production.yml"
-          target: "kityygram"
+          target: "kittygram"
       - name: Executing remote ssh commands to deploy
         uses: appleboy/ssh-action@master
         with:
@@ -154,7 +151,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
           script: |
-            cd infra_sprint1
+            cd kittygram
             sudo docker compose -f docker-compose.production.yml pull
             sudo docker compose -f docker-compose.production.yml down
             sudo docker compose -f docker-compose.production.yml up -d
