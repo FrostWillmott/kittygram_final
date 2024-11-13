@@ -26,8 +26,8 @@ services:
   gateway:
     image: frostwillmott/kittygram_gateway
     env_file: .env
-    ports:
-      - 9000:80
     volumes:
       - static:/staticfiles
       - media:/media
+    ports:
+      - 9000:80
