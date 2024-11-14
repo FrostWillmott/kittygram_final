@@ -17,17 +17,19 @@ services:
     volumes:
       - static:/backend_static
       - media:/media
+    depends_on:
+        - db
   frontend:
-    env_file: .env
     image: frostwillmott/kittygram_frontend
     command: cp -r /app/build/. /frontend_static/
     volumes:
       - static:/frontend_static
   gateway:
     image: frostwillmott/kittygram_gateway
-#    env_file: .env
     volumes:
       - static:/staticfiles
       - media:/media
     ports:
       - 9000:80
+    depends_on:
+      - backend

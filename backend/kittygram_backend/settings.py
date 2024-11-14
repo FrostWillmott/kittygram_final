@@ -2,13 +2,15 @@
 import os
 from pathlib import Path
 
+from django.core.management.utils import get_random_secret_key
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-cg6*%6d51ef8f#4!r3*$vmxm4)abgjw8mo!4y-q*uq1!4$-89$'
+SECRET_KEY = os.getenv('SECRET_KEY', get_random_secret_key())
 
-DEBUG = False
+DEBUG = os.getenv('DEBUG', False)
 
-ALLOWED_HOSTS = ['158.160.76.49', '127.0.0.1', 'localhost', 'kittygram.biz']
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '*').split(',')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -30,7 +32,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMidØdleware',
 ]
 
 ROOT_URLCONF = 'kittygram_backend.urls'
@@ -96,7 +98,7 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'collected_static'
+STATIC_ROOT = '/backend_static/static'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = '/media'
