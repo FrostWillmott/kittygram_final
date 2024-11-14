@@ -150,6 +150,4 @@ media/
 
 # Others
 node_modules
-
-
-/nginx/
+/gateway/
