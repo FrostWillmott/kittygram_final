@@ -56,10 +56,6 @@ jobs:
           uses: actions/checkout@v3
         - name: Set up Docker Buildx
           uses: docker/setup-buildx-action@v2
-#        - name: Build backend image
-#          run: |
-#            cd backend
-#            docker buildx build --platform linux/amd64 -t username/taski_backend .
         - name: Login to Docker
           uses: docker/login-action@v2
           with:
@@ -101,10 +97,6 @@ jobs:
         uses: actions/checkout@v3
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
-#      - name: Build frontend image
-#        run: |
-#          cd frontend
-#          docker buildx build --platform=linux/amd64 -t username/taski_frontend .
       - name: Login to Docker
         uses: docker/login-action@v2
         with:
@@ -125,10 +117,6 @@ jobs:
         uses: actions/checkout@v3
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
-#      - name: Build gateway image
-#        run: |
-#          cd gateway
-#          docker buildx build --platform=linux/amd64 -t username/taski_gateway .
       - name: Login to Docker
         uses: docker/login-action@v2
         with:
